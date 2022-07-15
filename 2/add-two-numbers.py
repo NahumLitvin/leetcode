@@ -8,12 +8,14 @@ class ListNode:
         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        lst = ListNode()
-        first = lst
+        current = ListNode()
+        first = current
         remainder = 0
         while True:
             sum = 0
             if not l1 and not l2:
+                if remainder:
+                    current.next = ListNode(remainder)
                 return first.next
             if l1: 
                 sum += l1.val
@@ -22,9 +24,9 @@ class Solution:
                 sum += l2.val
                 l2 = l2.next
             sum+=remainder         
-            lst.next = ListNode(sum % 10)
+            current.next = ListNode(sum % 10)
             remainder = sum // 10            
-            lst = lst.next
+            current = current.next
             
         
 lst =  ListNode(2,ListNode(4,ListNode(3)))
