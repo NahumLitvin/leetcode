@@ -12,13 +12,13 @@ class Solution:
         current_merged = merged_list_dummy_head
         
         while (current_l1 or current_l2):
-            if current_l1 and not current_l2: # if l2 is done just add the head of l1 as last
+            if not current_l2:
                 current_merged.next=current_l1
                 return merged_list_dummy_head.next
-            if current_l2 and not current_l1:# if l1 is done just add the head of l2 as last
+            if not current_l1:
                 current_merged.next=current_l2
                 return merged_list_dummy_head.next
-            if current_l1 and current_l2 : # if both lists got items compare and add the smaller
+            if current_l1 and current_l2 :
                 if current_l1.val < current_l2.val :
                     current_merged.next=current_l1
                     current_l1= current_l1.next
