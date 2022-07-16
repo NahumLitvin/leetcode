@@ -2,14 +2,11 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        min = 1000
-        max = 0
-        min_candidate = 1000 #becomes the new min if we find a complemental max
+        min = prices[0]
+        max = prices[0]
+        min_candidate = prices[0] #becomes the new min if we find a complemental max
         for price in prices:
-            print(f'{min} , {max} , {min_candidate}')
-            if price > max and price > min:
-                max = price
-            if price < min:
+            if price < min and price < max and price < min_candidate:
                 min_candidate=price # this is the lowest price we saw
             if price - min_candidate >= max - min:
                 max = price
