@@ -1,13 +1,16 @@
-from array import array
-from functools import reduce
-
-
-from typing import *
-class Solution:            
-    def isAnagram(self, s: str, t: str) -> bool:
-        array()
-            
-            
-sol = Solution()
-print(sol.isAnagram("rat","cat"))
-print(sol.isAnagram("beer","reeb"))
+from operator import inv
+from typing import Optional
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        tmp= self.invertTree(root.right)
+        root.right  = self.invertTree(root.left)
+        root.left = tmp
+        return root
+             
